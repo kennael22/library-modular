@@ -29,9 +29,9 @@
                         {{ item.id }}
                     </AppDataTableData>
 
-                    <!-- <AppDataTableData>
+                    <AppDataTableData>
                         {{ item.name }}
-                    </AppDataTableData> -->
+                    </AppDataTableData>
 
                     <AppDataTableData>
                         <!-- Edit member -->
@@ -110,7 +110,7 @@ const breadCrumb = [
   { label: 'Members', last: true }
 ]
 
-const headers = ['ID', 'Actions']
+const headers = ['ID', 'Name', 'Actions']
 
 const confirmDialogRef = ref(null)
 const confirmDelete = (deleteRoute) => {

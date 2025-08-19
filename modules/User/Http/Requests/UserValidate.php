@@ -4,6 +4,7 @@ namespace Modules\User\Http\Requests;
 
 use Illuminate\Validation\Rules\Password;
 use Modules\Support\Http\Requests\Request;
+use Illuminate\Validation\Rule;
 
 class UserValidate extends Request
 {
@@ -16,7 +17,11 @@ class UserValidate extends Request
     {
         return [
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('users')->ignore($this->route('id'))
+            ],
             'password' => $this->passwordRules(),
             'profile_type' => 'string',
             'profile_id' => 'integer|numeric',

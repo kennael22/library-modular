@@ -69,4 +69,33 @@ class AuthorController extends BackendController
         return redirect()->route('author.index')
             ->with('success', 'Author deleted.');
     }
+
+    public function getAuthors()
+    {
+        return Author::select('id', 'first_name', 'middle_name', 'last_name', 'suffix_name')
+        ->with('books:id,title')
+        ->when(request('searchColumn'), function ($query) {
+            $searchColumn = request('searchColumn');
+            $searchTerm = request('searchTerm');
+            $query->search($searchColumn, $searchTerm);
+        })
+        ->limit(10)
+        ->get()
+        ->map(function ($author) {
+            return [
+                'label' => $author->first_name . ' ' . $author->middle_name . ' ' . $author->last_name . ' ' . $author->suffix_name,
+                'value' => $author->id,
+                'id' => $author->id,
+                // map books
+                'books' => $author->books()->get()->map(function ($book) {
+                    return [
+                        'label' => $book->title,
+                        'value' => $book->id,
+                        'author_id' => $book->author_id,
+                        'id' => $book->id
+                    ];
+                })
+            ];
+        });
+    }
 }

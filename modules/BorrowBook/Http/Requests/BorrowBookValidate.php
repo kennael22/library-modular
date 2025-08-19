@@ -9,7 +9,11 @@ class BorrowBookValidate extends Request
     public function rules(): array
     {
         return [
-            'name' => 'required',
+            'book_id' => 'required',
+            'member_id' => 'required',
+            'borrow_date' => 'required',
+            'due_date' => 'required',
+            'return_date' => 'nullable'
         ];
     }
 }

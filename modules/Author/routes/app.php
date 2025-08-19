@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Modules\Author\Http\Controllers\AuthorController;
 
 Route::get('author', [
-    AuthorController::class, 'index', 
+    AuthorController::class, 'index',
 ])->name('author.index');
 
 Route::get('author/create', [
@@ -26,3 +26,7 @@ Route::put('author/{id}', [
 Route::delete('author/{id}', [
     AuthorController::class, 'destroy',
 ])->name('author.destroy');
+
+Route::get('author/getAuthors', [
+    AuthorController::class, 'getAuthors',
+])->name('author.getAuthors');

@@ -23,6 +23,7 @@ class BookValidate extends Request
                 Rule::unique('books')->ignore($this->route('id')),
             ],
             'cover_image' => 'nullable|image|max:2048', // Max size 2MB
+            'quantity' => 'nullable|numeric',
         ];
     }
 

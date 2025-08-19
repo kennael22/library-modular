@@ -112,7 +112,6 @@ watch(isClickOutside, (val) => {
 })
 
 onMounted(() => {
-    console.log(props.options)
     isOpen.value && (highlightedIndex.value = 0)
 })
 

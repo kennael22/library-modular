@@ -35,11 +35,18 @@ export default {
                 },
                 // member
                 {
-                    label: 'Member Type',
-                    permission: 'Member Type - List',
-                    icon: 'ri-account-box-line',
-                    link: route('memberType.index')
-                }
+                    label: 'Member',
+                    permission: 'Member - List',
+                    icon: 'ri-user-line',
+                    link: route('member.index')
+                },
+                // member type
+                // {
+                //     label: 'Member Type',
+                //     permission: 'Member Type - List',
+                //     icon: 'ri-account-box-line',
+                //     link: route('memberType.index')
+                // }
             ]
         },
         // acl

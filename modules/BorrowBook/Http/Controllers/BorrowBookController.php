@@ -5,6 +5,7 @@ namespace Modules\BorrowBook\Http\Controllers;
 use Modules\Support\Http\Controllers\BackendController;
 use Modules\BorrowBook\Http\Requests\BorrowBookValidate;
 use Modules\BorrowBook\Models\BorrowBook;
+use Modules\Member\Models\Member;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Response;
 
@@ -29,7 +30,11 @@ class BorrowBookController extends BackendController
 
     public function create(): Response
     {
-        return inertia('BorrowBook/BorrowBookForm');
+        $members = Member::get();
+
+        return inertia('BorrowBook/BorrowBookForm', [
+            'members' => $members,
+        ]);
     }
 
     public function store(BorrowBookValidate $request): RedirectResponse

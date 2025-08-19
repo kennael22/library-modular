@@ -127,6 +127,17 @@
                     />
                 </div>
                 <div>
+                    <AppLabel for="quantity">{{ __('Quantity') }}</AppLabel>
+                    <AppInputText
+                        id="quantity"
+                        v-model="form.quantity"
+                        type="text"
+                        :class="{
+                            'input-error': errorsFields.includes('quantity')
+                        }"
+                    />
+                </div>
+                <div>
                     <AppLabel for="cover_image">{{
                         __('Cover Image')
                     }}</AppLabel>
@@ -187,6 +198,7 @@ const form = useForm({
   genre: props.book ? props.book.genre : '',
   access_book_number: props.book ? props.book.access_book_number : '',
   cover_image: props.book ? props.book.cover_image : null,
+  quantity: props.book ? props.book.quantity : null,
   remove_previous_image: false
 })
 
